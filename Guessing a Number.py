@@ -12,7 +12,7 @@ n=random.randint(minimum,maximum)
 attempts=[]
 c=0
 print("\n****START GUESSING****\n")
-while 1:
+while(1):
     try:
         number=int(input("Enter Number: "))
         c+=1
