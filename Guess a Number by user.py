@@ -1,4 +1,4 @@
-#Guessing the Number Game
+#Guessing the Number Game by the User
 import random
 class validnumber(Exception):
     pass
@@ -6,23 +6,23 @@ class numbertoosmall(Exception):
     pass
 class numbertoobig(Exception):
     pass
-minimum=int(input("Enter the lower bound of the game: "))
-maximum=int(input("Enter the upper bound of the game: "))
-n=random.randint(minimum,maximum)
+lower_bound=int(input("Enter the lower bound of the game: "))
+upper_bound=int(input("Enter the upper bound of the game: "))
+computer_number=random.randint(lower_bound,upper_bound)
 attempts=[]
-c=0
+count=0
 print("\n****START GUESSING****\n")
 while(1):
     try:
-        number=int(input("Enter Number: "))
-        c+=1
-        print(f"Attempt no: {c}")
-        attempts.append(number)
-        if minimum>number or maximum<number:
+        user_guess=int(input("Enter Number: "))
+        count+=1
+        print(f"Attempt no: {count}")
+        attempts.append(user_guess)
+        if lower_bound>user_guess or upper_bound<user_guess:
             raise validnumber("Please enter a Valid Number within the boundaries")
-        elif number>n:
+        elif user_guess>computer_number:
             raise numbertoobig("**Hint** Please enter a Small Number")
-        elif number<n:
+        elif user_guess<computer_number:
             raise numbertoosmall("**Hint** Please enter a Big Number")
         else:
             break
@@ -30,10 +30,10 @@ while(1):
         print(e)
 print("\n")
 print("Congratulations you have cracked it......")
-print(f"The number is {n}")
-print(f"The total number of attempts you took to guess: {c}")
-reply=input("Do you want to know all your attempts(YES/NO)?? ")
-if reply=="YES":
+print(f"The number is {computer_number}")
+print(f"The total number of attempts you took to guess: {count}")
+reply=input("Do you want to know all your attempts(s/no)?? ")
+if reply=="s":
     print(f"Your attempts: {attempts}")
     print("\nCongratulations Once again,Please Come Back and Play again.\n")
 else:
